@@ -7,7 +7,7 @@ A simple Chrome extension to boost volume up to 200%
 1. Open Chrome and navigate to `chrome://extensions/`.
 2. Enable **Developer mode** in the top right corner.
 3. Click **Load unpacked**.
-4. Select the folder containing this project (`d:\MY PROJECTS\Volume-booster`).
+4. Select the folder containing this extension.
 5. The extension is now installed!
 
 ## Notes

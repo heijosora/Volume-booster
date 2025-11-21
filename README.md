@@ -11,5 +11,6 @@ A simple Chrome extension to boost volume up to 200%
 5. The extension is now installed!
 
 ## Notes
+- To unlock 300% volume boost, click on the "300%" button in the popup.
 - Some websites with strict CORS policies on media might not support volume boosting via this method.
 - If the volume doesn't change immediately, try pausing and playing the video.

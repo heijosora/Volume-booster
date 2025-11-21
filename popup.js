@@ -2,10 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('volumeSlider');
   const valueDisplay = document.getElementById('volumeValue');
   const resetBtn = document.getElementById('resetBtn');
+  const boostBtn = document.getElementById('boostBtn');
 
-  // Load saved volume
   chrome.storage.local.get(['volume'], (result) => {
     const volume = result.volume || 100;
+    if (volume > 200) {
+      slider.max = 300;
+    }
     updateUI(volume);
     sendVolumeToActiveTab(volume);
   });
@@ -19,6 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resetBtn.addEventListener('click', () => {
     const volume = 100;
+    slider.max = 200;
+    updateUI(volume);
+    sendVolumeToActiveTab(volume);
+    saveVolume(volume);
+  });
+
+  boostBtn.addEventListener('click', () => {
+    const volume = 300;
+    slider.max = 300;
     updateUI(volume);
     sendVolumeToActiveTab(volume);
     saveVolume(volume);
@@ -40,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           command: 'setVolume',
           value: parseInt(volume)
         }).catch(err => {
-          // Ignore errors if content script isn't ready or page doesn't support it
-          console.log('Could not send volume to tab:', err);
+          console.log(err);
         });
       }
     });
